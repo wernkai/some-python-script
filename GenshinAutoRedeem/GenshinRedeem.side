@@ -1,147 +1,40 @@
 {
-  "id": "55707fcb-8c78-4260-9c71-e61ca4504029",
+  "id": "933e4abd-4a98-4e97-b8d7-4b2748d457f7",
   "version": "2.0",
   "name": "GenshinRedeem",
-  "url": "https://genshin.hoyoverse.com/en/gift",
+  "url": "https://genshin.hoyoverse.com",
   "tests": [{
-    "id": "804a0cb8-6fb1-461f-af90-dbc52bc78aca",
+    "id": "e0fdb60b-208c-42d8-bb70-1f4b1298e0b3",
     "name": "Redeem",
     "commands": [{
-      "id": "12abbb7d-1f36-4386-97f3-e089e6e79881",
+      "id": "c01f4ef6-96e3-4b06-864a-f37d17a4e483",
       "comment": "",
       "command": "open",
-      "target": "https://genshin.hoyoverse.com/en/gift",
+      "target": "/en/gift",
       "targets": [],
       "value": ""
     }, {
-      "id": "bc9a2239-6bfa-49d3-b54d-adc90973249e",
+      "id": "55287dd3-56f9-43e4-a4ce-40ff226da4f2",
       "comment": "",
       "command": "setWindowSize",
       "target": "1936x1056",
       "targets": [],
       "value": ""
     }, {
-      "id": "16228faa-0e00-472d-939e-da64bdf23bcd",
+      "id": "bac243ae-d3ce-4056-8a23-59973e68ad65",
       "comment": "",
       "command": "click",
-      "target": "css=.login__btn > span",
+      "target": "id=cdkey__character",
       "targets": [
-        ["css=.login__btn > span", "css:finder"],
-        ["xpath=//div[@id='frame']/div[3]/div/div/div[3]/button/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'Log In')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "ac9bee8d-c99d-42e2-8a94-c0f2bcbc2003",
-      "comment": "",
-      "command": "selectFrame",
-      "target": "index=0",
-      "targets": [
-        ["index=0"]
-      ],
-      "value": ""
-    }, {
-      "id": "21166d33-1b4d-4f97-bdeb-87194aac6e45",
-      "comment": "",
-      "command": "click",
-      "target": "css=.el-dialog__body",
-      "targets": [
-        ["css=.el-dialog__body", "css:finder"],
-        ["xpath=//div/div[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "271d59c6-f374-46a4-91bb-f78300d0f576",
-      "comment": "",
-      "command": "type",
-      "target": "css=.is-focused > .el-input__inner",
-      "targets": [
-        ["css=.is-focused > .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["id=cdkey__character", "id"],
+        ["css=#cdkey__character", "css:finder"],
+        ["xpath=//input[@id='cdkey__character']", "xpath:attributes"],
+        ["xpath=//div[@id='frame']/div[3]/div/div[2]/div[2]/form/div[3]/div[2]/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "wernkai95@gmail.com"
-    }, {
-      "id": "3ec8ed29-ebef-4e16-8ada-6f7f0d271f4b",
-      "comment": "",
-      "command": "type",
-      "target": "css=.is-focused > .el-input__inner",
-      "targets": [
-        ["css=.is-focused > .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[4]/div/input", "xpath:position"]
-      ],
-      "value": "wernkai2012"
-    }, {
-      "id": "0ed722be-3d16-4397-9a38-814f859f1077",
-      "comment": "",
-      "command": "click",
-      "target": "css=.el-button",
-      "targets": [
-        ["css=.el-button", "css:finder"],
-        ["xpath=//button[@type='button']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
-      ],
       "value": ""
     }, {
-      "id": "f32f463a-b9e7-4ec0-89cf-f060c90c54e5",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.el-button",
-      "targets": [
-        ["css=.el-button", "css:finder"],
-        ["xpath=//button[@type='button']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "2d4880e6-313a-4118-8586-c0ac347d473d",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.el-button",
-      "targets": [
-        ["css=.el-button", "css:finder"],
-        ["xpath=//button[@type='button']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
-      ],
-      "value": "",
-      "opensWindow": true,
-      "windowHandleName": "win6709",
-      "windowTimeout": 2000
-    }, {
-      "id": "b41ce832-9e89-4e6f-8139-8532f9e7d1d3",
-      "comment": "",
-      "command": "storeWindowHandle",
-      "target": "root",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "88a7f829-6c1f-47c8-93a9-a71bcf1bf788",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${win6709}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "518944da-76c4-4b93-b491-f211f22270a3",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "15480a5d-ef27-4dee-93b3-28fa1d4f6268",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${root}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "ff1341b3-8c20-4b03-b851-58287a17b7ad",
+      "id": "5d02b23c-d219-445f-a658-5454de1e11f9",
       "comment": "",
       "command": "click",
       "target": "css=.cdkey-select__btn",
@@ -152,7 +45,7 @@
       ],
       "value": ""
     }, {
-      "id": "b7a2d675-a0d5-48c2-87bf-a088c1d5c009",
+      "id": "dea08cd0-3454-4148-8db7-b177f834efef",
       "comment": "",
       "command": "click",
       "target": "css=.cdkey-select__option:nth-child(3)",
@@ -163,7 +56,7 @@
       ],
       "value": ""
     }, {
-      "id": "62322913-dd96-4ed7-8553-bb182144d1b7",
+      "id": "99455015-29ae-4760-a529-7f922b09f588",
       "comment": "",
       "command": "click",
       "target": "id=cdkey__code",
@@ -176,7 +69,7 @@
       ],
       "value": ""
     }, {
-      "id": "5f48f224-1c1e-450a-bc16-7adf682032b6",
+      "id": "e40cf43f-e809-4100-86ae-c6740b51b02b",
       "comment": "",
       "command": "type",
       "target": "id=cdkey__code",
@@ -187,9 +80,9 @@
         ["xpath=//div[@id='frame']/div[3]/div/div[2]/div[2]/form/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
-      "value": "1234567890"
+      "value": "somevalue"
     }, {
-      "id": "4c916b68-f88b-4a48-ab88-44627af46b53",
+      "id": "27516741-f73f-49c7-8f15-f5db80081062",
       "comment": "",
       "command": "click",
       "target": "css=.cdkey-form__submit",
@@ -202,22 +95,9 @@
       ],
       "value": ""
     }, {
-      "id": "d30c1193-cb87-42f1-abc0-1e096911cf78",
+      "id": "5164b5b9-926d-463a-95f6-b5d4c6fa8ba5",
       "comment": "",
-      "command": "mouseOver",
-      "target": "css=.cdkey-form__submit",
-      "targets": [
-        ["css=.cdkey-form__submit", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//div[@id='frame']/div[3]/div/div[2]/div[2]/form/button", "xpath:idRelative"],
-        ["xpath=//form/button", "xpath:position"],
-        ["xpath=//button[contains(.,'Redeem')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "78f57218-1549-4e8c-8dba-9db6780c8597",
-      "comment": "",
-      "command": "mouseOut",
+      "command": "click",
       "target": "css=.cdkey-form__submit",
       "targets": [
         ["css=.cdkey-form__submit", "css:finder"],
@@ -230,13 +110,13 @@
     }]
   }],
   "suites": [{
-    "id": "b2319fa3-887d-40ac-a439-5f444378f716",
+    "id": "74c1be20-15df-4b76-9895-955bdd66ae0d",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": []
+    "tests": ["e0fdb60b-208c-42d8-bb70-1f4b1298e0b3"]
   }],
-  "urls": ["https://genshin.hoyoverse.com/en/gift"],
+  "urls": ["https://genshin.hoyoverse.com/"],
   "plugins": []
 }

@@ -9,6 +9,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class TestRedeem():
   def setup_method(self, method):
@@ -17,81 +19,80 @@ class TestRedeem():
   
   def teardown_method(self, method):
     self.driver.quit()
-  
-  def wait_for_window(self, timeout = 2):
-    time.sleep(round(timeout / 1000))
-    wh_now = self.driver.window_handles
-    wh_then = self.vars["window_handles"]
-    if len(wh_now) > len(wh_then):
-      return set(wh_now).difference(set(wh_then)).pop()
+
+
+  def redeem_code(self, codes:list):
+    self.codes = codes
   
   def test_redeem(self):
     # Test name: Redeem
+
+    # code to redeem
+    codes = self.codes
     # Step # | name | target | value
-    # 1 | open | https://genshin.hoyoverse.com/en/gift | 
+    # 1 | open | /en/gift | 
     self.driver.get("https://genshin.hoyoverse.com/en/gift")
+
     # 2 | setWindowSize | 1936x1056 | 
     self.driver.set_window_size(1936, 1056)
-    # 3 | click | css=.login__btn > span | 
-    self.driver.find_element(By.CSS_SELECTOR, ".login__btn > span").click()
-    # 4 | selectFrame | index=0 | 
-    self.driver.switch_to.frame(0)
-    # 5 | click | css=.el-dialog__body | 
     self.driver.implicitly_wait(10)
-    searchBox = self.driver.find_element(By.CSS_SELECTOR, ".el-dialog__body")
-    placeText = searchBox.get_attribute("placeholder")#.equals("Username/Email")
-    print(placeText)
-    # if placeText:
-    #   # self.driver.find_element(By.CSS_SELECTOR, ".el-dialog__body").click()
-    #   print('correct')
-    # else:
-    #   print('incorrect')
+    self.driver.find_element_by_class_name('login__btn').click()
+    self.driver.implicitly_wait(10)
+    self.driver.switch_to.frame('hyv-account-frame')
+    self.driver.find_element_by_xpath("//input[@placeholder='Username/Email']").click()
+    self.driver.find_element_by_xpath("//input[@placeholder='Username/Email']").send_keys('someone@gmail.com')
+    self.driver.find_element_by_xpath("//input[@placeholder='Password']").click()
+    self.driver.find_element_by_xpath("//input[@placeholder='Password']").send_keys('somepassword')
+    self.driver.implicitly_wait(10)
+    self.driver.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[1]/form/button").click()
+    self.driver.implicitly_wait(10)
+    # self.driver.switch_to.default_content()
+    # Wait for the switch to complete
+    # wait = WebDriverWait(self.driver, 10)  # Adjust the timeout as needed
+    # wait.until(EC.frame_to_be_available_and_switch_to_it((By.ID, "__nuxt")))
 
-    # # 6 | type | css=.is-focused > .el-input__inner | wernkai95@gmail.com
-    # self.driver.find_element(By.CSS_SELECTOR, ".is-focused > .el-input__inner").send_keys("wernkai95@gmail.com")
-    # # 7 | type | css=.is-focused > .el-input__inner | wernkai2012
-    # self.driver.find_element(By.CSS_SELECTOR, ".is-focused > .el-input__inner").send_keys("wernkai2012")
-    # # 8 | click | css=.el-button | 
-    # self.driver.find_element(By.CSS_SELECTOR, ".el-button").click()
-    # # 9 | mouseOver | css=.el-button | 
-    # element = self.driver.find_element(By.CSS_SELECTOR, ".el-button")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element).perform()
-    # # 10 | mouseOut | css=.el-button | 
-    # self.vars["window_handles"] = self.driver.window_handles
-    # # 11 | storeWindowHandle | root | 
-    # [object Object]
-    # # 12 | selectWindow | handle=${win6709} | 
-    # self.vars["win6709"] = self.wait_for_window(2000)
-    # # 13 | close |  | 
-    # self.vars["root"] = self.driver.current_window_handle
-    # # 14 | selectWindow | handle=${root} | 
-    # self.driver.switch_to.window(self.vars["win6709"])
-    # # 15 | click | css=.cdkey-select__btn | 
-    # self.driver.close()
-    # # 16 | click | css=.cdkey-select__option:nth-child(3) | 
-    # self.driver.switch_to.window(self.vars["root"])
-    # # 17 | click | id=cdkey__code | 
-    # self.driver.find_element(By.CSS_SELECTOR, ".cdkey-select__btn").click()
-    # # 18 | type | id=cdkey__code | 1234567890
-    # self.driver.find_element(By.CSS_SELECTOR, ".cdkey-select__option:nth-child(3)").click()
-    # # 19 | click | css=.cdkey-form__submit | 
-    # self.driver.find_element(By.ID, "cdkey__code").click()
-    # # 20 | mouseOver | css=.cdkey-form__submit | 
-    # self.driver.find_element(By.ID, "cdkey__code").send_keys("1234567890")
-    # # 21 | mouseOut | css=.cdkey-form__submit | 
-    # self.driver.find_element(By.CSS_SELECTOR, ".cdkey-form__submit").click()
-    # element = self.driver.find_element(By.CSS_SELECTOR, ".cdkey-form__submit")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element).perform()
-    # element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element, 0, 0).perform()
-  
+    for code in codes:
+      self.driver.find_element(By.ID, "cdkey__code").send_keys(Keys.CONTROL + "a")
+      self.driver.find_element(By.ID, "cdkey__code").send_keys(Keys.BACKSPACE) 
+      # 3 | click | id=cdkey__character | 
+      self.driver.find_element(By.ID, "cdkey__character").click()
+      # 4 | click | css=.cdkey-select__btn | 
+      self.driver.find_element(By.CSS_SELECTOR, ".cdkey-select__btn").click()
+      # 5 | click | css=.cdkey-select__option:nth-child(3) | 
+      self.driver.find_element(By.CSS_SELECTOR, ".cdkey-select__option:nth-child(3)").click()
+      # 6 | click | id=cdkey__code | 
+      self.driver.find_element(By.ID, "cdkey__code").click()
+      # 7 | type | id=cdkey__code | somevalue
+      self.driver.find_element(By.ID, "cdkey__code").send_keys(code)
+      # 8 | click | css=.cdkey-form__submit | 
+      self.driver.find_element(By.CSS_SELECTOR, ".cdkey-form__submit").click()
+      # 9 | click | css=.cdkey-form__submit | 
+      self.driver.find_element(By.CSS_SELECTOR, ".cdkey-form__submit").click()
 
-# redeemCode = ['','','']
+      """
+      ToDo: Capture the return message to determine is a valid redeem or not
+      Status: The result HTML element appear and remove in a short duration, suspect Selenium doesn't have enough time to capture it
+      Possible solution: Pause the browser execution to allow Selenium capture the result.
+      """
+      wait = WebDriverWait(self.driver, 10)
+      try:
+          # Wait for the element to appear
+          element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'cdkey-result__message')))
 
-start = TestRedeem()
-start.setup_method(method='')
-start.test_redeem()
-start.teardown_method(method='')
+          # Perform actions with the element
+          redeem_result = self.driver.find_element(By.CSS_SELECTOR, "cdkey-result__message").text
+          # Wait for the element to disappear
+          wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, 'cdkey-result__message')))
+          print(f'Code {code} redeem result: {redeem_result}')
+
+      except:
+          print("Element did not appear or disappear within the specified time.")
+
+      self.driver.implicitly_wait(50)
+
+codes = ['123','456', '789']
+auto = TestRedeem()
+auto.redeem_code(codes)
+auto.setup_method('')
+auto.test_redeem()
+auto.teardown_method('')
