@@ -3,9 +3,9 @@
 Personal use python automation script, web scraping script.
 
 ## Table of Content
-- [GenshinAutoRedeem](#GenshinAutoRedeem)
-- [Pokemon Png Scrap](#Pokemon-Png-Scrap)
-- [Pytest-Only](#Pytest-Only)
+- [GenshinAutoRedeem](#genshinautoredeem)
+- [Pokemon Png Scrap](#pokemon-png-scrap)
+- [Pytest-Only](#pytest-only)
 
 ### GenshinAutoRedeem
 <b><u>Description:</u></b> <br/>
