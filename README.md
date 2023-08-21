@@ -23,6 +23,7 @@ Automating the process of redeeming Genshin codes.
 <b><u>To Do:</u></b> <br/>
 Record the returned message to check whether the redemption is valid or not.
 
+___
 ### Pokemon-Png-Scrap
 <b><u>Description:</u></b> <br/>
 Scrap pokemon script from pokemondb.net.
@@ -38,6 +39,7 @@ Scrap pokemon script from pokemondb.net.
 <b><u>To Do:</u></b> <br/>
 NA
 
+___
 ### Pytest-Only
 <b><u>Description:</u></b> <br/>
 Some random PyTest script with different scenario.
@@ -54,6 +56,7 @@ NA
 - REST API with Auth test scenario.
 - REST API with Apache Spark dataframe scenario.
 
+___
 #### Package requirement
 ```
 1. selenium
